@@ -7,10 +7,12 @@ if (url.startswith('http')):
     pass
 else:
     url = 'http://' + url
-
+    
 html_text = requests.get(url).text
 
 soup = BeautifulSoup(html_text, 'lxml')
 for meta_tags in soup.find_all("meta"):
     if(meta_tags.get("name") == 'generator'):
         print(meta_tags.get("content"))
+        
+#check for regex : search for strings like 'wp-content etc'
